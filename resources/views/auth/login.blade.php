@@ -20,7 +20,7 @@
             @enderror
 
             <div>
-                <a href="#" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Forgot password?</a>
+                <a href="{{ route('forgot') }}" class="font-medium text-blue-900 hover:bg-blue-300 rounded-md p-2">Forgot password?</a>
             </div>
 
             <div>
