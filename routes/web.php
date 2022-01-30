@@ -21,12 +21,9 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 
 Route::middleware('auth')->group(function() {
-    /*  TODO
-    |   Will filter requests
-    |   If user not authorised
-    |   will return to Login page
-    */
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::post('/posts/comment{id}', [PostController::class, 'comment'])->name('comment');
 });
 
 Route::middleware('guest')->group(function() {
@@ -35,4 +32,10 @@ Route::middleware('guest')->group(function() {
 
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('/login_process', [AuthController::class, 'login'])->name('login_process');
+
+    Route::get('/forgot', [AuthController::class, 'showForgotForm'])->name('forgot');
+    Route::post('/forgot_process', [AuthController::class, 'forgot'])->name('forgot_process');
 });
+
+Route::get('/contacts', [IndexController::class, 'showContactForm'])->name('contacts');
+Route::post('/contact_form_process', [IndexController::class, 'contactForm'])->name('contact_form_process');
