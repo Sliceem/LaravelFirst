@@ -14,13 +14,6 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function logout()
-    {
-        auth('web')->logout();
-
-        return redirect(route('home'));
-    }
-
     public function login(Request $request)
     {
         $data = $request->validate([
@@ -33,6 +26,13 @@ class AuthController extends Controller
         }
 
         return redirect(route('login'))->withErrors(['email' => 'User not found, or Password is wrong']);
+    }
+
+    public function logout()
+    {
+        auth('web')->logout();
+
+        return redirect(route('home'));
     }
 
     public function showRegisterForm()
